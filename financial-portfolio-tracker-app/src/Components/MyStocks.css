@@ -1,0 +1,28 @@
+.MyStocksTable { 
+	width: 80%; 
+	border-collapse: collapse; 
+	margin:50px auto;
+	}
+
+/* Zebra striping */
+.MyStocksTr:nth-of-type(odd) { 
+	background: #eee; 
+	}
+
+.MyStocksTh { 
+	background: #3498db; 
+	color: white; 
+	font-weight: bold; 
+	}
+
+.Td, .MyStocksTh { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 18px;
+	}
+	.stopTracking{
+		padding: 1vh 5vh;
+		background-color: red;
+		color: white;
+	}

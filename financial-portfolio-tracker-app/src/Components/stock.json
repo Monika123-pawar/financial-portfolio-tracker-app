@@ -1,0 +1,44 @@
+  {
+  "stocks": [
+    {
+        "symbol":"NIKE",   
+        "name":"NIKE"
+    },
+    {
+        "symbol":"HD",  
+        "name":"Home Depot Inc."
+    },
+    {
+        "symbol":"DIS",   
+        "name":"Walt Disney Company"
+    },
+    {
+        "symbol":"GS",    
+        "name":"Goldman Sachs Group Inc."
+    },
+    {
+        "symbol":"AXP",    
+        "name":"American Express"
+    },
+    {
+        "symbol":"BA",    
+        "name":"The Boeing company"
+    },
+    {
+        "symbol":"INTC",    
+        "name":"INTEL Corporation"
+    },
+    {
+        "symbol":"JPM",    
+        "name":"JPMorgan Chase"
+    },
+    {
+        "symbol":"MCD",    
+        "name":"McDonal'S Corporation "
+    },
+    {
+        "symbol":"MSFT",   
+        "name":"Microsoft Corporation"
+    }
+]
+  }

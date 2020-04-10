@@ -1,0 +1,25 @@
+.allStocks{
+    margin: 0% 10%;
+    width:80% ;
+    height: 30%;
+}
+ul{
+    padding: 0;
+    margin: 0;
+    list-style-type:none ;
+    column-count: 2;
+}
+li{
+    text-decoration: none;
+    padding: 1vh;
+    text-align: start;
+}
+button{
+    padding: 2vh  3vh;
+    border-radius: 10px;
+    box-shadow:4px #aaaaaa;
+    outline: none;   
+}
+span{
+    margin-left: 4%;
+}
