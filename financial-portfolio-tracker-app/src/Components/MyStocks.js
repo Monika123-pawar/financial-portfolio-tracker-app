@@ -7,32 +7,38 @@ class MyStocks extends Component {
         super(props)
 
         this.state = {
-            symbol:'',
-            name: '',
-            noOfShare: '',
-            buyPrice: '',
-            currentPrice: '',
-            profitLoss: '',
+            mystock:[],
+            id:'',
+            name:'',
         }        
+        this.stopTracking=this.stopTracking.bind(this);
     }
-
-    getData(){
-
-    }
-   
     componentDidMount() {
-        axios.post(`https://financial-portfolio-trac-3ec87.firebaseio.com/Mystocks/MyStock.json`, { })
-            .then(function (response) {
-                console.log('monika');
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        axios.get(`https://financial-portfolio-trac-3ec87.firebaseio.com/mystock.json`)
+        .then(res => {
+            const mystock = res.data;
+            this.setState({ mystock });
+            console.log(mystock);
+        })
     }
- 
+    stopTracking(e){
+      this.setState({
+          id:e.target.value,
+          name:e.target.name
+    
+    })
+        console.log(this.state.id);
+        console.log(this.state.name);
+        axios.delete(`https://financial-portfolio-trac-3ec87.firebaseio.com/mystock/${this.state.id}.json`)
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+        })
 
-
+    }
+    
     render() {
+      
         return (
             <div className="MyStocks">
                 <table className='MyStocksTable'>
@@ -47,17 +53,23 @@ class MyStocks extends Component {
                             <th className="MyStocksTh"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td className="Td">1</td>
-                            <td className="Td">{this.state.name}</td>
-                            <td className="Td">1</td>
-                            <td className="Td">1</td>
-                            <td className="Td">1</td>
-                            <td className="Td">1</td>
-                            <td className="Td"><button className="stopTracking">Stop Tracking</button></td>
+                   
+                   {(this.state.mystock==null)?(<tbody><tr><td><h1> No stock have been added </h1></td></tr></tbody>):(<tbody>
+                    {Object.keys(this.state.mystock).map((mystock,index)=>
+                        <tr key={index}>
+                        <td className="Td">{this.state.mystock[mystock].companySymbol}</td>
+                        <td className="Td">{this.state.mystock[mystock].name}</td>
+                        <td className="Td">{this.state.mystock[mystock].InputNoShares}</td>
+                        <td className="Td">{this.state.mystock[mystock].InputBuyPrice}</td>
+                        <td className="Td">1</td>
+                        <td className="Td">1</td>
+                        <td className="Td"><button value={index} name={this.state.mystock[mystock].name} className="stopTrackingBtn" onClick={this.stopTracking}>Stop Tracking</button></td>
+
                         </tr>
-                    </tbody>
+                        )}
+                        </tbody>
+                        )
+                    }
                 </table>
             </div>
         )

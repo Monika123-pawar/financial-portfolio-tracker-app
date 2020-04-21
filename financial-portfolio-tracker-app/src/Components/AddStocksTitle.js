@@ -53,13 +53,12 @@ render() {
                 companyName={this.state.companyName}
                 companySymbol={this.state.companySymbol}
             >
-                inside modal
                     </Modal>
             <h1>Add Stocks to my stocks</h1>
             <div className="allStocks">
                 <ul>
                     {this.state.stocks.map((stock, index) =>
-                            <li><button className="StockButton" key={index} onClick={this.openModalSymbolHandler} name={this.state.stocks[index].symbol}
+                            <li key={index}><button className="StockButton"  onClick={this.openModalSymbolHandler} name={this.state.stocks[index].symbol}
                              id={this.state.stocks[index].name}>{stock.symbol}</button>
                             <span id="companyName">{stock.name}</span></li>
 

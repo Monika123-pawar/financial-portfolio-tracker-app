@@ -1,20 +1,18 @@
-import React from 'react'
+import React  from 'react'
 import './Modal.css';
-import MyStocks from './MyStocks';
 import axios from 'axios'
+import Alpha from './Alpha';
 
 const Modal = (props) => {
-
     let textInputNoShares = React.createRef();
     let textInputBuyPrice = React.createRef();
     let textInputDate = React.createRef();
-  
     let InputNoShares;
     let InputBuyPrice;
     let InputDate;
     const name = props.companyName;;
     const companySymbol = props.companySymbol;
-
+    let isAlpha = false;
 
     function addCompanyStock(e) {
         try {
@@ -25,16 +23,13 @@ const Modal = (props) => {
         catch (err) {
             console.log(err);
         }
-        if(InputNoShares&&InputBuyPrice&&InputDate){
-            setTimeout(() => {
-                getCurrentPrice();
-            }, 3000);
-          
-            console.log("pppp");
-            postData(name, companySymbol, InputNoShares, InputBuyPrice, InputDate );
+        if (InputNoShares && InputBuyPrice && InputDate) {
+           
+            postData(name, companySymbol, InputNoShares, InputBuyPrice, InputDate);       
+           
         }
         function postData(name, companySymbol, InputNoShares, InputBuyPrice, InputDate) {
-            axios.post(`https://financial-portfolio-trac-3ec87.firebaseio.com/Mystocks/MyStock.json`, { name, companySymbol, InputNoShares, InputBuyPrice, InputDate })
+            axios.post(`https://financial-portfolio-trac-3ec87.firebaseio.com/mystock.json`, { name, companySymbol, InputNoShares, InputBuyPrice, InputDate })
                 .then(function (response) {
                     console.log(response);
                 })
@@ -42,26 +37,12 @@ const Modal = (props) => {
                     console.log(error);
                 });
         }
-
-        function getCurrentPrice(){
-            alert('in')
-            const api_key = 'YI2ECTED6AVWOUHF';
-            axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=HD&apikey=${api_key}`)
-                .then(res => {
-                    const Data = res.data;
-                    console.log(Data)
-                })
-        }
+      
     }
 
     return (
         <div className="AddStockForm">
-            <MyStocks name={name}
-                symbol={companySymbol}
-                noShares={InputNoShares}
-                buyPrice={InputBuyPrice}
-                buyDate={InputDate}
-            />
+
             <div className="modal-wrapper"
                 style={{
                     transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
@@ -92,8 +73,9 @@ const Modal = (props) => {
                                 <td><input ref={textInputDate} type="date" id="buyDate" required /></td>
                             </tr>
                         </table>
-                        <button className="AddButton" onClick={addCompanyStock}>Add</button>
-                    </form>
+                        <button className="AddButton" onClick={addCompanyStock}>Add</button>  
+                    </form>       
+                   <Alpha buyDate={InputDate} companySymbol={companySymbol}/>
                 </div>
             </div>
         </div>

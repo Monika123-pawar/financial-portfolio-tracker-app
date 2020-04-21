@@ -16,10 +16,8 @@ import './Modal.css';
     render() {
         return (
             <div >
-            
+                <MyStocks/>
                  <AddStocksTitle/>
-                
-
             </div>
         )
     }
