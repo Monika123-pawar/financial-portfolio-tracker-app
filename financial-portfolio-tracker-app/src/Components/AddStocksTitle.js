@@ -54,6 +54,7 @@ render() {
                 companySymbol={this.state.companySymbol}
             >
                     </Modal>
+                    <hr className="line"/>
             <h1>Add Stocks to my stocks</h1>
             <div className="allStocks">
                 <ul>

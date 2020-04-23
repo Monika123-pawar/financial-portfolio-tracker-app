@@ -24,7 +24,6 @@ const Modal = (props) => {
             console.log(err);
         }
         if (InputNoShares && InputBuyPrice && InputDate) {
-           
             postData(name, companySymbol, InputNoShares, InputBuyPrice, InputDate);       
            
         }
@@ -37,6 +36,7 @@ const Modal = (props) => {
                     console.log(error);
                 });
         }
+        isAlpha=true;
       
     }
 
@@ -54,7 +54,7 @@ const Modal = (props) => {
                 </div>
 
                 <div className="modal-body">
-                    <form>
+                    <form className="main">
                         <table>
                             <tr>
                                 <td><label>Company Name</label></td>
@@ -75,7 +75,8 @@ const Modal = (props) => {
                         </table>
                         <button className="AddButton" onClick={addCompanyStock}>Add</button>  
                     </form>       
-                   <Alpha buyDate={InputDate} companySymbol={companySymbol}/>
+                    {(isAlpha)?( <Alpha buyDate={InputDate} companySymbol={companySymbol}/>):(<h1></h1>)}
+                  
                 </div>
             </div>
         </div>

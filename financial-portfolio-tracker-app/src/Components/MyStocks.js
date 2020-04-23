@@ -41,6 +41,7 @@ class MyStocks extends Component {
       
         return (
             <div className="MyStocks">
+            <h1 className="myStocksName">My Stocks</h1>
                 <table className='MyStocksTable'>
                     <thead>
                         <tr className="MyStocksTr">
@@ -54,7 +55,7 @@ class MyStocks extends Component {
                         </tr>
                     </thead>
                    
-                   {(this.state.mystock==null)?(<tbody><tr><td><h1> No stock have been added </h1></td></tr></tbody>):(<tbody>
+                   {(this.state.mystock==null)?(<tbody><tr><td colSpan="7"><h1> No stock have been added </h1></td></tr></tbody>):(<tbody>
                     {Object.keys(this.state.mystock).map((mystock,index)=>
                         <tr key={index}>
                         <td className="Td">{this.state.mystock[mystock].companySymbol}</td>

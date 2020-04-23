@@ -4,18 +4,17 @@ import MyStocks from './MyStocks';
 import './Modal.css';
 
  class Main extends Component {
-     constructor(props) {
-         super(props)
-     
-         this.state = {
-            
-         }
-     }
-      
-    
+
     render() {
+        const nav={
+            color: "white",
+            backgroundColor: "DodgerBlue",
+            padding: "10px",
+            fontFamily: "Arial"
+        }
         return (
             <div >
+            <h1 style={nav}>Financial Portfolio Tracker</h1>
                 <MyStocks/>
                  <AddStocksTitle/>
             </div>
