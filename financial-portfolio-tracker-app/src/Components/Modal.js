@@ -12,7 +12,6 @@ const Modal = (props) => {
     let InputDate;
     const name = props.companyName;;
     const companySymbol = props.companySymbol;
-    let isAlpha = false;
 
     function addCompanyStock(e) {
         try {
@@ -25,7 +24,6 @@ const Modal = (props) => {
         }
         if (InputNoShares && InputBuyPrice && InputDate) {
             postData(name, companySymbol, InputNoShares, InputBuyPrice, InputDate);       
-           
         }
         function postData(name, companySymbol, InputNoShares, InputBuyPrice, InputDate) {
             axios.post(`https://financial-portfolio-trac-3ec87.firebaseio.com/mystock.json`, { name, companySymbol, InputNoShares, InputBuyPrice, InputDate })
@@ -36,8 +34,6 @@ const Modal = (props) => {
                     console.log(error);
                 });
         }
-        isAlpha=true;
-      
     }
 
     return (
@@ -73,10 +69,8 @@ const Modal = (props) => {
                                 <td><input ref={textInputDate} type="date" id="buyDate" required /></td>
                             </tr>
                         </table>
-                        <button className="AddButton" onClick={addCompanyStock}>Add</button>  
+                        <button className="AddButton"  onClick={addCompanyStock}>Add</button>  
                     </form>       
-                    {(isAlpha)?( <Alpha buyDate={InputDate} companySymbol={companySymbol}/>):(<h1></h1>)}
-                  
                 </div>
             </div>
         </div>
