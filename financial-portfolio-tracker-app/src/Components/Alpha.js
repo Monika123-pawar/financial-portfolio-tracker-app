@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import axios from 'axios';
 import './MyStocks.css';
 
-
 class Alpha extends Component {
     constructor(props) {
         super(props)
@@ -21,18 +20,18 @@ class Alpha extends Component {
         const buyPrice = this.props.buyPrice;
         axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${api_symbol}&apikey=${api_key}`)
             .then(res => {
-                console.log(res.data)
-                const price = res.data['Time Series (Daily)'][date]['4.close'];
-                console.log(price)
+                console.log(res.data);
+                const price = res.data['Time Series (Daily)'][date]['4. close'];
+                console.log(price);
                 this.setState({
                     currentPrice: price,
-                    //profitLoss:(currentPrice - buyPrice) * noShare
+                    profitLoss:(this.state.currentPrice - buyPrice) * noShare
                 });
+             
             })
-            .catch({
-                
+            .catch(error => {
+                console.log(error);
             })
-
     }
 
     render() {

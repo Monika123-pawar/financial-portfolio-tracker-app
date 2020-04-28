@@ -26,7 +26,7 @@ const Modal = (props) => {
             postData(name, companySymbol, InputNoShares, InputBuyPrice, InputDate);       
         }
         function postData(name, companySymbol, InputNoShares, InputBuyPrice, InputDate) {
-            axios.post(`https://financial-portfolio-trac-3ec87.firebaseio.com/mystock.json`, { name, companySymbol, InputNoShares, InputBuyPrice, InputDate })
+            axios.post(`https://financial-portfolio-trac-3ec87.firebaseio.com/mystock.json`, { name, companySymbol, InputNoShares, InputBuyPrice, InputDate, })
                 .then(function (response) {
                     console.log(response);
                 })

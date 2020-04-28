@@ -9,6 +9,7 @@ class MyStocks extends Component {
 
         this.state = {
             mystock: [],
+            count:0,
         }
         this.stopTracking = this.stopTracking.bind(this);
     }
@@ -19,6 +20,7 @@ class MyStocks extends Component {
                 this.setState({ mystock });
                 console.log(mystock);
             })
+        
     }
     stopTracking(e) {
         let id = e.target.value;
@@ -59,8 +61,8 @@ class MyStocks extends Component {
                                 buyPrice={this.state.mystock[mystock].InputBuyPrice} 
                                 symbol={this.state.mystock[mystock].companySymbol} 
                                 date={this.state.mystock[mystock].InputDate}/>
-                                <td className="Td"><button type="button" value={mystock} name={this.state.mystock[mystock].name} className="stopTrackingBtn" onClick={this.stopTracking}>Stop Tracking</button></td>
-                            </tr>
+                                <td className="Td"><button type="submit" value={mystock} name={this.state.mystock[mystock].name} className="stopTrackingBtn" onClick={this.stopTracking}>Stop Tracking</button></td>
+                                </tr> 
                         )}
                     </tbody>
                     )
